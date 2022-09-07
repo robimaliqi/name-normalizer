@@ -1,3 +1,3 @@
 export const normalize = (name) => {
-  return name;
+  return name.split(" ").reverse().join(", ");
 };
