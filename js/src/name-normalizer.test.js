@@ -24,7 +24,7 @@ describe("a name normalizer", () => {
       "Louis-Dreyfus, Julia S. E."
     ));
 
-  xit("appends suffixes to end", () =>
+  it("appends suffixes to end", () =>
     expect(normalize("Martin Luther King, Jr.")).toEqual(
       "King, Martin L., Jr."
     ));

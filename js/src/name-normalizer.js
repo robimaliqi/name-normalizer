@@ -1,16 +1,25 @@
 export const normalize = (name) => {
-  const names = name.trim().split(" ");
+  let nameBeforeSuffix;
+  let suffix;
+  [nameBeforeSuffix, suffix] = name.split(", ");
+  if (!suffix) {
+    nameBeforeSuffix = name;
+  }
+
+  const names = nameBeforeSuffix.trim().split(" ");
   if (names.length <= 1) {
     return name;
   }
 
   const firstName = first(names);
   const middleNames = names.slice(1, -1);
-  const middleInitials = middleNames.map(initialize);
-  const namesOtherThanLast = [firstName, ...middleInitials];
   const lastName = last(names);
+  const middleInitials = middleNames.map(initialize);
 
-  return `${lastName}, ${namesOtherThanLast.join(" ")}`;
+  const namesOtherThanLast = [firstName, ...middleInitials];
+  return `${lastName}, ${namesOtherThanLast.join(" ")}${
+    suffix ? `, ${suffix}` : ""
+  }`;
 };
 
 const first = (array) => array[0];
