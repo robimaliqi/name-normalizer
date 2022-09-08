@@ -13,7 +13,7 @@ describe("a name normalizer", () => {
   it("trims leading and trailing whitespace", () =>
     expect(normalize("  Big Boi   ")).toEqual("Boi, Big"));
 
-  xit("initializes middle name", () =>
+  it("initializes middle name", () =>
     expect(normalize("Henry David Thoreau")).toEqual("Thoreau, Henry D."));
 
   xit("does not initialize one letter middle name", () =>
