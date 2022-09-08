@@ -1,15 +1,10 @@
 export const normalize = (name) => {
-  let nameBeforeSuffix;
-  let suffix;
-  let extraneousCommanSegment;
-  [nameBeforeSuffix, suffix, extraneousCommanSegment] = name.split(", ");
-  if (extraneousCommanSegment) {
+  const commaTokens = name.split(", ");
+  if (commaTokens.length > 2) {
     throw "name may only contain a max of one comma";
   }
 
-  if (!suffix) {
-    nameBeforeSuffix = name;
-  }
+  const [nameBeforeSuffix, suffix] = commaTokens;
 
   const names = nameBeforeSuffix.trim().split(" ");
   if (names.length <= 1) {
