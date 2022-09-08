@@ -5,19 +5,12 @@ export const normalize = (name) => {
   }
 
   const firstName = first(names);
-  let middleName;
-  let middleInitial;
-  let lastName;
+  const middleNames = names.slice(1, -1);
+  const middleInitials = middleNames.map(initialize);
+  const namesOtherThanLast = [firstName, ...middleInitials];
+  const lastName = last(names);
 
-  if (names.length === 3) {
-    middleName = names[1];
-    middleInitial = initialize(middleName);
-    lastName = names[2];
-  } else {
-    lastName = names[1];
-  }
-
-  return `${lastName}, ${firstName}${middleInitial ? ` ${middleInitial}` : ""}`;
+  return `${lastName}, ${namesOtherThanLast.join(" ")}`;
 };
 
 const first = (array) => array[0];
