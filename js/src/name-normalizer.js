@@ -7,14 +7,15 @@ export const normalize = (name) => {
   const firstName = names[0];
   const lastName = names[names.length - 1];
   const middleNames = names.slice(1, -1);
-  const middleInitials = middleNames.map((n) => {
-    if (n.length > 1) {
-      return `${n.substring(0, 1)}.`;
-    } else {
-      return n;
-    }
-  });
+  const middleInitials = middleNames.map(initialize);
   const namesOtherThanLast = [firstName, ...middleInitials];
 
   return `${lastName}, ${namesOtherThanLast.join(" ")}`;
+};
+const initialize = (n) => {
+  if (n.length > 1) {
+    return `${n.substring(0, 1)}.`;
+  } else {
+    return n;
+  }
 };
