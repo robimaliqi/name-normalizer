@@ -19,7 +19,7 @@ describe("a name normalizer", () => {
   it("does not initialize one letter middle name", () =>
     expect(normalize("Harry S Truman")).toEqual("Truman, Harry S"));
 
-  xit("initializes each of multiple middle names", () =>
+  it("initializes each of multiple middle names", () =>
     expect(normalize("Julia Scarlett Elizabeth Louis-Dreyfus")).toEqual(
       "Louis-Dreyfus, Julia S. E."
     ));
@@ -29,8 +29,8 @@ describe("a name normalizer", () => {
       "King, Martin L., Jr."
     ));
 
-  xit("throws when name contains two commas", () =>
+  it("throws when name contains two commas", () =>
     expect(() => {
       normalize("Thurston, Howell, III");
-    }).toThrow());
+    }).toThrow("name may only contain a max of one comma"));
 });
